@@ -1,17 +1,49 @@
-// Constructor for Book Objects 
-function Book(title, author, pages, read){
+let myLibrary = [];
+
+function Book(title, author, pages, read, coverimage){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-
-    //Function to report book info
-    this.info = function(){
-        let readStatus = this.read ? "read" : "not ready yet";
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}`;
-    };
+    this.coverimage = coverimage;
+}
+function render(){
+    let libraryEl = document.querySelector("#library");
+    for (let i = 0; i < myLibrary.length; i++){
+        let book = myLibrary[i];
+        let bookEl = document.createElement("div");
+        bookEl.innerHTML = `<p>${book.title}</p>`
+        libraryEl.appendChild(bookEl);
+    }
 }
 
-//Example;
-const theHobbit = new Book("The Hobbbit", "J.R.R Tolkein", 295, false);
-console.log(theHobbit.info());
+function addBookToLibrary(){
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+    let read = document.getElementById("read").checked;
+    let coverimage = document.getElementById("coverimage").files;
+    let newBook = new Book(title, author, pages, read, coverimage);
+    myLibrary.push(newBook);
+    render();
+}
+
+
+document.querySelector("#new-book-form").addEventListener("submit", function(event){
+    event.preventDefault();
+    addBookToLibrary();
+})
+
+
+let newBookbtn = document.querySelector("#new-book-btn");
+newBookbtn.addEventListener("click", function(){
+    newBookForm = document.querySelector("#new-book-form");
+    newBookForm.style.display = "block";
+})
+
+let addBookCover = document.getElementById("book-cover");
+let addCoverImage = document.getElementById("coverimage");
+
+addCoverImage.onchange = function(){
+    addBookCover.src = URL.createObjectURL(addCoverImage.files[0]);
+}
