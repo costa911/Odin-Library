@@ -7,9 +7,13 @@ function Book(title, author, pages, read, coverimage){
     this.read = read;
     this.coverimage = coverimage;
 }
+
 function render(){
     let libraryEl = document.querySelector("#library");
     libraryEl.innerHTML = "";
+    let readCount = 0;
+    let unreadCount = 0;
+    
     for (let i = 0; i < myLibrary.length; i++){
         let book = myLibrary[i];
         let bookEl = document.createElement("div");
@@ -28,9 +32,37 @@ function render(){
             bookEl.appendChild(imgEl);
         }
         libraryEl.appendChild(bookEl);
+        
+        // Count read and unread books
+        if (book.read) {
+            readCount++;
+        } else {
+            unreadCount++;
+        }
     }
+    
+    // Display read and unread counts in the left panel
+    let leftPanelEl = document.querySelector("#left-panel");
+    leftPanelEl.innerHTML = `
+        <div class="p-4">
+            <p class="font-bold text-lg text-white">Read (${readCount}):</p>
+            ${getBooksHTML(true)}
+            <p class="font-bold text-lg text-white">Unread (${unreadCount}):</p>
+            ${getBooksHTML(false)}
+        </div>
+    `;
 }
 
+// Helper function to generate HTML for read and unread books
+function getBooksHTML(isRead) {
+    let booksHTML = "";
+    myLibrary.forEach(book => {
+        if (book.read === isRead) {
+            booksHTML += `<p>${book.title}, ${book.author}, ${book.pages} pages</p>`;
+        }
+    });
+    return booksHTML;
+}
 
 function addBookToLibrary(){
     let title = document.getElementById("title").value;
@@ -43,23 +75,23 @@ function addBookToLibrary(){
     render();
 }
 
-
-
 document.querySelector("#new-book-form").addEventListener("submit", function(event){
     event.preventDefault();
     addBookToLibrary();
-})
-
+});
 
 let newBookbtn = document.querySelector("#new-book-btn");
 newBookbtn.addEventListener("click", function(){
     newBookForm = document.querySelector("#new-book-form");
     newBookForm.style.display = "block";
-})
+});
 
 let addBookCover = document.getElementById("book-cover");
 let addCoverImage = document.getElementById("coverimage");
 
 addCoverImage.onchange = function(){
     addBookCover.src = URL.createObjectURL(addCoverImage.files[0]);
-}
+};
+
+// Initial rendering
+render();
