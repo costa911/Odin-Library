@@ -18,8 +18,8 @@ Each book card includes details like title, author, pages, and whether it has be
 If a cover image is provided, it will also be displayed alongside the book details.
 Read and Unread Counts:
 
-The left panel dynamically shows the count of read and unread books.
-Clicking on the counts will display a list of books categorized accordingly.
+The panel dynamically shows the count of read and unread books.
+Clicking on the counts will display a list of books categorized accordingly. 
 
 Sources to Credit: 
 The Odin Project for their excellent curriculum: https://www.theodinproject.com/  
@@ -30,6 +30,8 @@ https://www.youtube.com/watch?v=9YGgC1WPpf4&t=1165s
 Setting up Tailwind with CDN: 
 https://www.youtube.com/watch?v=lWETVfhyp9M
 https://stackoverflow.com/questions/75624202/tailwind-intellisens-isnt-working-with-cdn
+
+This project was styled using Tailwind, this was done on purpose to try different methods, setting up Tailwind proved to be challenging at first but once set up it proved to be rather good way of styling, eliminating the back and fort from page to another.
 
 Photo:
 https://unsplash.com/photos/photo-of-library-shelves-GWCvnsMtiBg?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash

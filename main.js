@@ -7,7 +7,8 @@ function Book(title, author, pages, read, coverimage){
     this.read = read;
     this.coverimage = coverimage;
 }
-
+//The render() function updates the UI to display the current library of books.
+//It dynamically generates HTML for each book and updates the left panel with read and unread counts.
 function render(){
     let libraryEl = document.querySelector("#library");
     libraryEl.innerHTML = "";
@@ -63,7 +64,8 @@ function getBooksHTML(isRead) {
     });
     return booksHTML;
 }
-
+//This function extracts data from the form inputs and creates a new Book object.
+//It then adds the new book to the myLibrary array and triggers a re-rendering of the library.
 function addBookToLibrary(){
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
