@@ -3,26 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Odin-Library</title>
 </head>
-<body>
-    <button id="new-book-btn">New Book</button>
-    <form id="new-book-form" style="display: none;">
-    <label for="title">Title</label>
-    <input type="text" id="title">
-    <label for="author">Author</label>
-    <input type="text" id="author">
-    <label for="pages">Pages</label>
-    <input type="text" id="pages">
-    <label for="read">Read?</label>
-    <input type="checkbox" id="read">
-    <img src="book_cover.jpg" id="book-cover">
-    <label for="coverimage">Add Cover Image</label>
-    <input type="file" accept="image/jpeg, image/png, image/jpg" id="coverimage">
-    <input type="submit" value="Add Book">
+<body style="background-image: url(annie-spratt-GWCvnsMtiBg-unsplash.jpg);" class="bg-background bg-cover min-h-screen flex flex-col">
+
+
+
+    <button id="new-book-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">New Book</button>
+    
+    <form id="new-book-form" class="w-full max-w-sm" style="display: none;">
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-white-700 text-xs font-bold mb-2" for="title">Title</label>
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="title" type="text">
+            </div>
+            <div class="w-full md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="author">Author</label>
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="author" type="text">
+            </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="pages">Pages</label>
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="pages" type="text">
+            </div>
+            <div class="w-full md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="read">Read?</label>
+                <input class="mr-2 leading-tight" id="read" type="checkbox">
+                <span class="text-sm text-gray-600">Yes</span>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="coverimage">Add Cover Image</label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="coverimage" type="file" accept="image/jpeg, image/png, image/jpg">
+        </div>
+        <div class="flex items-center justify-between">
+            <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Add Book">
+        </div>
     </form>
-    <div id="library"></div>
-  <script src="main.js"></script>  
+
+    <div id="library" class="flex flex-wrap justify-center items-start"></div>
+
+    <script src="main.js"></script>
 </body>
 </html>
